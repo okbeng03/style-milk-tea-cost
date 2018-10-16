@@ -1,0 +1,39 @@
+#sidenav {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 300px;
+  border-right: 1px solid #e6e6e6;
+  font-family: "Microsoft YaHei";
+  font-size: 14px;
+  color: #666;
+
+  h1 {
+    padding: 0 20px;
+    color: #000;
+  }
+
+  a {
+    color: #333;
+    text-decoration: none;
+
+    &:hover {
+      color: #ff7300;
+    }
+  }
+
+  ul {
+    list-style-type: none;
+  }
+
+  .el-menu {
+    border-right: 0 none;
+  }
+}
+
+#app {
+  margin-left: 300px;
+  padding: 20px;
+  overflow-y: auto;
+}

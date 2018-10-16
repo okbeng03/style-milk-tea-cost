@@ -1,0 +1,35 @@
+#app {
+  font-family: "Microsoft YaHei";
+  font-size: 14px;
+  color: #666;
+
+  a {
+    color: #333;
+    text-decoration: none;
+
+    &:hover {
+      color: #ff7300;
+    }
+  }
+
+  ul {
+    list-style-type: none;
+  }
+
+  .statis {
+    padding: 10px 0 60px;
+    font-size: 16px;
+    color: #333;
+
+    .item {
+      float: left;
+      margin-right: 20px;
+
+      .value {
+        color: #e60012;
+        font-size: 20px;
+        font-weight: 700;
+      }
+    }
+  }
+}
