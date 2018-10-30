@@ -11,6 +11,8 @@
       <el-table-column
         prop="category"
         label="类型"
+        :filters="categories"
+        :filter-method="categoryFilter"
       >
       </el-table-column>
       <el-table-column
@@ -92,6 +94,7 @@
 </template>
 
 <script>
+import _ from 'lodash'
 import request from '@/global/js/request'
 
 export default {
@@ -101,6 +104,20 @@ export default {
       recipe: '',
       recipeDetail: [],
       recipeShow: false
+    }
+  },
+  computed: {
+    categories () {
+      const { list } = this
+
+      const categories = list.map(good => {
+        return {
+          text: good.category,
+          value: good.category
+        }
+      })
+
+      return _.uniqBy(categories, 'value')
     }
   },
   created () {
@@ -119,8 +136,12 @@ export default {
     },
     handleShowRecipe (data) {
       this.recipe = data.name
-      this.recipeDetail = data.costDetail
+      this.recipeDetail = JSON.parse(data.costDetail)
       this.recipeShow = true
+    },
+    categoryFilter (value, row, column) {
+      const property = column['property']
+      return row[property] === value
     }
   },
   filters: {

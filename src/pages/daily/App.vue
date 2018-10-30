@@ -25,6 +25,10 @@
         收益:
         <span class="value">{{ gain | fixed }}</span>
       </div>
+      <div class="item">
+        -房租+水电:
+        <span class="value">{{ gain - 350 * list.length | fixed }}</span>
+      </div>
     </div>
     <el-table
       :data="list"

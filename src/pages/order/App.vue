@@ -40,6 +40,8 @@
       <el-table-column
         prop="category"
         label="分类"
+        :filters="categories"
+        :filter-method="categoryFilter"
       ></el-table-column>
       <el-table-column
         prop="specs"
@@ -96,6 +98,7 @@
 </template>
 
 <script>
+import _ from 'lodash'
 import moment from 'moment'
 import queryString from 'query-string'
 import request from '@/global/js/request'
@@ -111,6 +114,20 @@ export default {
       earning: 0,
       cost: 0,
       gain: 0
+    }
+  },
+  computed: {
+    categories () {
+      const { list } = this
+
+      const categories = list.map(good => {
+        return {
+          text: good.category,
+          value: good.category
+        }
+      })
+
+      return _.uniqBy(categories, 'value')
     }
   },
   created () {
@@ -139,6 +156,10 @@ export default {
           this.gain = gain
         }
       })
+    },
+    categoryFilter (value, row, column) {
+      const property = column['property']
+      return row[property] === value
     }
   },
   filters: {
